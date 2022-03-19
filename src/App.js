@@ -1,6 +1,8 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import moment from "moment";
+import {getTimer} from './utils'
 import './App.css';
+
 
 //Esta vez con Functional Components y hooks.
 const App = (props) => {
@@ -28,7 +30,7 @@ const App = (props) => {
       }, 500);
       return () => clearInterval(interval);
     }
-  },[timeLeft, running, inBreak, time, breakTime]);
+  }, [timeLeft, running, inBreak, time, breakTime]);
 
 
   const start = () => {
@@ -70,13 +72,7 @@ const App = (props) => {
       <div id="timer-label" className="timer-label">
         {inBreak ? (<>BREAK</>) : (<>SESSION</>)}
         <div id="time-left" className="display">
-          {
-            timeLeft.toDate().getHours() >= 2 ? 60 : (
-              timeString(timeLeft.toDate().getMinutes())
-            )
-          }:{
-            timeString(timeLeft.toDate().getSeconds())
-          }
+          {getTimer(timeLeft)}
         </div>
       </div>
       <br></br>
@@ -112,7 +108,7 @@ const App = (props) => {
           <a href="https://github.com/Julianmenav/" target="_blank">
             Julian Mena
           </a>
-       </div>
+        </div>
       </div>
     </div>
   )
@@ -133,15 +129,6 @@ const Timer = (props) => {
       </button>
     </div>
   )
-}
-
-
-
-const timeString = (n) => {
-  let str = n.toString()
-  if (str.length >= 2)
-    return str.substring(0, 2);
-  return "0" + str;
 }
 
 export default App;
