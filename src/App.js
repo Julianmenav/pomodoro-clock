@@ -1,16 +1,24 @@
 import { useState, useEffect } from 'react';
 import moment from "moment";
 import { getTimer } from './utils'
+import { useGetTimers } from './hooks';
+import { Timer } from './components/Timer';
 import './App.css';
 
 
 //Esta vez con Functional Components y hooks.
 const App = (props) => {
   const [running, setRunning] = useState(false);
-  const [time, setTime] = useState(25);
-  const [breakTime, setBreakTime] = useState(5);
-  const [timeLeft, setTimeLeft] = useState(moment(new Date(0)).add(time, "m"))
   const [inBreak, setInBreak] = useState(false);
+  const { time,
+    breakTime,
+    timeLeft,
+    setTimeLeft,
+    resetTimers,
+    incrementSession,
+    decrementSession,
+    incrementBreak,
+    decrementBreak } = useGetTimers(25, 5);
 
   //LIFECYCLE
   //Se encarga de reducir el contador de tiempo y de cambiar entre modos cuando se llega a 0.
@@ -41,34 +49,9 @@ const App = (props) => {
   const reset = () => {
     setInBreak(false);
     setRunning(false);
-    setTime(25)
-    setBreakTime(5);
-    setTimeLeft(moment(new Date(0)).add(25, "m"))
+    resetTimers();
     let sound = document.getElementById("beep")
     sound.pause()
-  }
-
-  const incrementSession = () => {
-    if (time < 60) {
-      setTimeLeft(moment(new Date(0)).add(time + 1, "m"));
-      setTime(time + 1);
-    }
-  }
-  const decrementSession = () => {
-    if (time > 1) {
-      setTimeLeft(moment(new Date(0)).add(time - 1, "m"));
-      setTime(time - 1);
-    }
-  }
-  const incrementBreak = () => {
-    if (breakTime < 60) {
-      setBreakTime(breakTime + 1);
-    }
-  }
-  const decrementBreak = () => {
-    if (breakTime > 1) {
-      setBreakTime(breakTime - 1);
-    }
   }
 
   return (
@@ -119,23 +102,6 @@ const App = (props) => {
         id="beep"
         preload="auto"
       />
-    </div>
-  )
-}
-
-//Componente para controlar un timer y su state.
-const Timer = (props) => {
-  return (
-    <div id={props.type + "-length"} className="timer">
-      <button id={props.type + "-decrement"} onClick={props.decrementCallback}>
-        <i className="bi bi-arrow-left"></i>
-      </button>
-      <div>
-        <p>{props.timer}</p>
-      </div>
-      <button id={props.type + "-increment"} onClick={props.incrementCallback}>
-        <i className="bi bi-arrow-right"></i>
-      </button>
     </div>
   )
 }
