@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import moment from "moment";
-import {getTimer} from './utils'
+import { getTimer } from './utils'
 import './App.css';
 
 
@@ -20,6 +20,8 @@ const App = (props) => {
         setTimeLeft(moment(new Date(0)).add(time, "m"))
         setInBreak(false);
       } else {
+        let sound = document.getElementById("beep")
+        sound.play()
         setTimeLeft(moment(new Date(0)).add(breakTime, "m"))
         setInBreak(true);
       }
@@ -42,6 +44,8 @@ const App = (props) => {
     setTime(25)
     setBreakTime(5);
     setTimeLeft(moment(new Date(0)).add(25, "m"))
+    let sound = document.getElementById("beep")
+    sound.pause()
   }
 
   const incrementSession = () => {
@@ -110,6 +114,11 @@ const App = (props) => {
           Julian Mena
         </a>
       </div>
+      <audio
+        src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+        id="beep"
+        preload="auto"
+      />
     </div>
   )
 }
