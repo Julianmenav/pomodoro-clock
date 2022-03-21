@@ -69,6 +69,16 @@ body {
   margin-top: 9px;
 }
 
+.start-and-reset {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  display: grid;
+  place-content: center;
+}
+
 .big {
   height: 45px;
   width: 80px;
@@ -90,3 +100,13 @@ body {
   text-decoration: none;
 }
 
+@media only screen and (max-width: 600px) {
+  /* For mobile phones: */
+    .container {
+    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+  }
+}

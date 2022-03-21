@@ -96,19 +96,19 @@ const App = (props) => {
         </div>
       </div>
       <br></br>
-      <div>
+      <div className="start-and-reset">
         <button id="start_stop"
           onClick={start}
           className={running ? ("bi bi-pause big") : ("bi bi-play big")}
         ></button>
         <button className={"bi bi-bootstrap-reboot big"} id="reset" onClick={reset}></button>
-        <div className="author">
-          {' '}
-          Designed and Coded by <br />
-          <a href="https://github.com/Julianmenav/" target="_blank">
-            Julian Mena
-          </a>
-        </div>
+      </div>
+      <div className="author">
+        {' '}
+        Designed and Coded by <br />
+        <a href="https://github.com/Julianmenav/" target="_blank">
+          Julian Mena
+        </a>
       </div>
     </div>
   )
