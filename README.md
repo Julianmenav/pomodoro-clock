@@ -6,8 +6,7 @@ The application consists of a timer clock to study or work more efficiently as i
 
 
 ## Online Demo
-You can try it online and see the code with this working demo: https://codepen.io/julianmenav/pen/GRyJXMO
-
+You can try it online with this working demo: https://julian-pomodoro.up.railway.app/
 ## Demo image
 ![react-pomodoro_demo](./public/captura_web.PNG)
 
