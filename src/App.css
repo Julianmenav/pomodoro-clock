@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #85C1E9 ;
+  background-color: #85C1E9;
 }
 
 .wrapper {
@@ -15,6 +15,7 @@ body {
 }
 
 .container {
+  margin: auto;
   border-radius: 10px;
   background-color: pink;
   width: 450px;
@@ -39,10 +40,11 @@ body {
 }
 
 .timers {
-  display: flex; 
+  display: flex;
 }
 
-.break-label, .session-label {
+.break-label,
+.session-label {
   text-align: center;
   padding: 10px;
   font-size: 22px;
@@ -57,7 +59,7 @@ body {
 
 }
 
-.timer > * {
+.timer>* {
   border-radius: 5px;
   width: 40px;
   height: 40px;
@@ -65,7 +67,7 @@ body {
   font-weight: bold;
 }
 
-.timer > div > p {
+.timer>div>p {
   margin-top: 9px;
 }
 
@@ -95,14 +97,34 @@ button {
   color: #566573
 }
 
-.author > a {
+.author>a {
   color: #17202A;
   text-decoration: none;
 }
 
+#text {
+  margin: auto;
+  margin-bottom: 2.5vw;
+  border-radius: 10px;
+  background-color: #fff;
+  font-size: 13px;
+  padding: 0.8em;
+  opacity: 0.7;
+  width: 50vw;
+  max-width: 680px;
+  min-width: 400px;
+  text-align: center;
+}
+
+#text>.advice {
+  margin-bottom: 0;
+}
+
+
+
 @media only screen and (max-width: 600px) {
   /* For mobile phones: */
-    .container {
+  .container {
     transform: scale(0.8);
     -webkit-transform: scale(0.8);
     -moz-transform: scale(0.8);

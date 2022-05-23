@@ -3,6 +3,7 @@ import moment from "moment";
 import { getTimer } from './utils'
 import { useGetTimers } from './hooks';
 import { Timer } from './components/Timer';
+import { Guide } from './components/Guide'
 import './App.css';
 
 
@@ -55,53 +56,56 @@ const App = (props) => {
   }
 
   return (
-    <div className="container">
-      <div id="timer-label" className="timer-label">
-        {inBreak ? (<>BREAK</>) : (<>SESSION</>)}
-        <div id="time-left" className="display">
-          {getTimer(timeLeft)}
-        </div>
-      </div>
-      <br></br>
-      <div className="timers">
-        <div id="session-label" className="session-label">
-          Session Length
-          <Timer type="session"
-            incrementCallback={incrementSession}
-            decrementCallback={decrementSession}
-            timer={time}
-          />
+    <div>
+      <Guide />
+      <div className="container">
+        <div id="timer-label" className="timer-label">
+          {inBreak ? (<>BREAK</>) : (<>SESSION</>)}
+          <div id="time-left" className="display">
+            {getTimer(timeLeft)}
+          </div>
         </div>
         <br></br>
-        <div id="break-label" className="break-label">
-          Break Length
-          <Timer type="break"
-            incrementCallback={incrementBreak}
-            decrementCallback={decrementBreak}
-            timer={breakTime}
-          />
+        <div className="timers">
+          <div id="session-label" className="session-label">
+            Session Length
+            <Timer type="session"
+              incrementCallback={incrementSession}
+              decrementCallback={decrementSession}
+              timer={time}
+            />
+          </div>
+          <br></br>
+          <div id="break-label" className="break-label">
+            Break Length
+            <Timer type="break"
+              incrementCallback={incrementBreak}
+              decrementCallback={decrementBreak}
+              timer={breakTime}
+            />
+          </div>
         </div>
+        <br></br>
+        <div className="start-and-reset">
+          <button id="start_stop"
+            onClick={start}
+            className={running ? ("bi bi-pause big") : ("bi bi-play big")}
+          ></button>
+          <button className={"bi bi-bootstrap-reboot big"} id="reset" onClick={reset}></button>
+        </div>
+        <div className="author">
+          {' '}
+          Designed and Coded by <br />
+          <a href="https://github.com/Julianmenav/" target="_blank">
+            Julian Mena
+          </a>
+        </div>
+        <audio
+          src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+          id="beep"
+          preload="auto"
+        />
       </div>
-      <br></br>
-      <div className="start-and-reset">
-        <button id="start_stop"
-          onClick={start}
-          className={running ? ("bi bi-pause big") : ("bi bi-play big")}
-        ></button>
-        <button className={"bi bi-bootstrap-reboot big"} id="reset" onClick={reset}></button>
-      </div>
-      <div className="author">
-        {' '}
-        Designed and Coded by <br />
-        <a href="https://github.com/Julianmenav/" target="_blank">
-          Julian Mena
-        </a>
-      </div>
-      <audio
-        src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
-        id="beep"
-        preload="auto"
-      />
     </div>
   )
 }
