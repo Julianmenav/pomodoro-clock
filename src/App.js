@@ -45,7 +45,7 @@ const App = (props) => {
 
 
   const start = () => {
-    running ? (setRunning(false)) : (setRunning(true));
+    setRunning(!running)
   }
   const reset = () => {
     setInBreak(false);
