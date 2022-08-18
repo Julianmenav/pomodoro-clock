@@ -2,7 +2,7 @@
 //Componente para controlar un timer y su state.
 export const Timer = (props) => {
   return (
-    <div id={props.type + "-length"} className="timer">
+    <div id={props.type + "-length"} className="timer" style={props.style}>
       <button id={props.type + "-decrement"} onClick={props.decrementCallback}>
         <i className="bi bi-arrow-left"></i>
       </button>
