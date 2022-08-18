@@ -17,7 +17,6 @@ body {
 .container {
   margin: auto;
   border-radius: 10px;
-  background-color: pink;
   width: 450px;
   height: 450px;
   display: flex;
@@ -79,6 +78,7 @@ body {
 button {
   display: grid;
   place-content: center;
+  background-color: #ffffff;
 }
 
 .big {

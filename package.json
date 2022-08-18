@@ -1,10 +1,9 @@
 {
-  "homepage":"https://julianmenav.github.io/react-pomodoro-clock",
+  "homepage": "https://julianmenav.github.io/react-pomodoro-clock",
   "name": "react-pomodoro-clock",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0"
