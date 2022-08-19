@@ -1,61 +1,63 @@
-* {
+body {
+  background-color: #85C1E9;
   margin: 0;
 }
 
-body {
-  background-color: #85C1E9;
-}
-
-.wrapper {
-  height: 100vh;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+#text {
+  margin: auto;
+  font-size: 13px;
+  width: 50vw;
+  max-width: 680px;
+  min-width: 350px;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding-bottom: 0.2em;
+  padding: 0.8em;
+  border-radius: 10px;
+  background-color: #fff;
+  opacity: 0.7;
+  text-align: center;
 }
 
 .container {
-  margin: auto;
-  border-radius: 10px;
-  width: 450px;
-  height: 450px;
+  font-size: 16px;
+  border-radius: 50%;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 50rem;
+  height: 50rem;
 }
 
 .timer-label {
   font-weight: bold;
   text-align: center;
   font-size: 20px;
+  margin-top:1em;
 }
 
 .display {
-  text-align: center;
-  width: 400px;
-  height: 120px;
-  font-size: 90px;
+  font-size: 6em;
 }
 
 .timers {
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  font-size:1.3em;
 }
 
 .break-label,
 .session-label {
   text-align: center;
-  padding: 10px;
-  font-size: 22px;
 }
 
 .timer {
   display: flex;
-  width: 150px;
-  max-width: 150px;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-
 }
 
 .timer>* {
@@ -64,21 +66,22 @@ body {
   height: 40px;
   font-size: 20px;
   font-weight: bold;
+  text-align: center;
 }
 
 .timer>div>p {
   margin-top: 9px;
 }
 
+button {
+  display: grid;
+  place-content: center center;
+  background-color: #ffffff;
+}
+
 .start-and-reset {
   display: flex;
   flex-direction: row;
-}
-
-button {
-  display: grid;
-  place-content: center;
-  background-color: #ffffff;
 }
 
 .big {
@@ -94,7 +97,8 @@ button {
   font-family: sans;
   margin-top: 15px;
   font-size: 16px;
-  color: #566573
+  color: #566573;
+  margin-bottom: 10px;
 }
 
 .author>a {
@@ -102,33 +106,25 @@ button {
   text-decoration: none;
 }
 
-#text {
-  margin: auto;
-  margin-bottom: 2.5vw;
-  border-radius: 10px;
-  background-color: #fff;
-  font-size: 13px;
-  padding: 0.8em;
-  opacity: 0.7;
-  width: 50vw;
-  max-width: 680px;
-  min-width: 400px;
-  text-align: center;
-}
-
-#text>.advice {
-  margin-bottom: 0;
-}
-
-
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
   /* For mobile phones: */
   .container {
-    transform: scale(0.8);
-    -webkit-transform: scale(0.8);
-    -moz-transform: scale(0.8);
-    -ms-transform: scale(0.8);
-    -o-transform: scale(0.8);
+    width: 100vw;
+    height: 100vw;
+    max-width: 50rem;
+    max-height: 50rem;
+  }
+  .display {
+    margin-top: -15px;
+    font-size: 4.5em;
+  }
+  .timers{
+    margin-top:-20px;
+  }
+  .start-and-reset{
+    margin-top:-10px;
+  }
+  .author {
+    margin-top:0;
   }
 }

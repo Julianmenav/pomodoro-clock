@@ -120,7 +120,6 @@ export const Clock = (props) => {
             {formatUnixToMinutes(timeCounter)}
           </div>
         </div>
-        <br></br>
         <div className="timers">
           <div id="session-label" className="session-label">
             Session Length
