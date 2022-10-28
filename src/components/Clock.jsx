@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import { formatUnixToMinutes } from "../utils/formatTimer";
 
-
-export const Clock = ({inBreak, timeCounter}) => {
+export const Clock = ({ started, inBreak, timeCounter }) => {
+  const formattedTime = formatUnixToMinutes(timeCounter);
+  
+  useEffect(() => {
+    document.title = started ? `${formattedTime} Pomodoro` : "Pomodoro Timer";
+    console.count("cambiando titulo")
+  }, [formattedTime]);
 
   return (
     <div className="container">

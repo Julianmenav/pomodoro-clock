@@ -3,7 +3,7 @@ import { Clock } from "./components/Clock";
 import StartResetButtons from "./components/StartResetButtons";
 import OptionsCard from "./components/OptionsCard";
 import { useEffect, useState } from "react";
-const INTERVAL_MS = 100;
+const INTERVAL_MS = 250;
 const defaultSessionTime = 20;
 const defaultBreakTime = 5;
 
@@ -116,7 +116,7 @@ function App() {
   return (
     <>
       <div className=" cover-size absolute inset-0 flex flex-col pt-4 text-black antialiased duration-300 sm:pt-6 md:pt-10">
-        <Clock inBreak={inBreak} timeCounter={timeCounter}/>
+        <Clock started={started} inBreak={inBreak} timeCounter={timeCounter}/>
         <StartResetButtons
           handleStart={start}
           handleReset={reset}
