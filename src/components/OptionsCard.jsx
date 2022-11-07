@@ -2,26 +2,29 @@ import React from "react";
 import { Timer } from "./Timer";
 
 const OptionsCard = ({
-  incrementBreak,
-  incrementSession,
-  decrementBreak,
-  decrementSession,
-  sessionTime,
-  breakTime,
+  longBreak,
+  session,
+  breakTimer,
+  handleSession,
+  handleBreak,
+  handleLongBreak
 }) => {
   return (
     <div>
       <Timer
-        type="session"
-        incrementCallback={incrementSession}
-        decrementCallback={decrementSession}
-        timer={sessionTime}
+        type="Session"
+        changeTimer={handleSession}
+        timer={session}
       />
       <Timer
-        type="break"
-        incrementCallback={incrementBreak}
-        decrementCallback={decrementBreak}
-        timer={breakTime}
+        type="Break"
+        changeTimer={handleBreak}
+        timer={breakTimer}
+      />
+      <Timer
+        type="Long Break"
+        changeTimer={handleLongBreak}
+        timer={longBreak}
       />
     </div>
   );
