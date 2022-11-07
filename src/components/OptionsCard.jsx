@@ -2,6 +2,7 @@ import React from "react";
 import { Timer } from "./Timer";
 
 const OptionsCard = ({
+  hidden,
   longBreak,
   session,
   breakTimer,
@@ -10,7 +11,7 @@ const OptionsCard = ({
   handleLongBreak
 }) => {
   return (
-    <div>
+    <div className={`noHideMenu absolute top-0 right-0 ${hidden ? "hidden" : ""}`}>
       <Timer
         type="Session"
         changeTimer={handleSession}
