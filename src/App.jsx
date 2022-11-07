@@ -6,17 +6,19 @@ import { useEffect, useState } from "react";
 import { timersReducer } from "./reducers/timersReducer";
 import { useReducer } from "react";
 
+import { useHiddenMenu } from "./hooks/useHiddenMenu";
+
 const INTERVAL_MS = 250;
 const defaultSession = 20;
 const defaultBreak = 5;
-const defaultLongBreak = 15
+const defaultLongBreak = 15;
 
 const initialState = {
   session: defaultSession,
   breakTimer: defaultBreak,
   longBreak: defaultLongBreak,
   counter: defaultSession * 60 * 1000,
-  internalClock: { remaining: 0, date: new Date() }
+  internalClock: { remaining: 0, date: new Date() },
 };
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
   const [started, setStarted] = useState(false);
   const [running, setRunning] = useState(false);
   const [inBreak, setInBreak] = useState(false);
+
+  const [isMenuHidden, setIsMenuHidden] = useHiddenMenu();
 
   //LIFECYCLE
   //Se encarga de reducir el contador de tiempo (when running) y de cambiar entre modos cuando se llega a 0.
@@ -44,7 +48,6 @@ function App() {
         if (timerState.internalClock.remaining - deltaMS <= 0) {
           changePhase();
         }
-
       }, INTERVAL_MS);
 
       return () => {
@@ -56,12 +59,9 @@ function App() {
 
   //Update Timer cuando el usuario cambia la duración de la sesión.
   useEffect(() => {
-    if(running) return;
-    dispatch({type: 'CHANGE_COUNTER', minutes: timerState.session})
-    
-
-  }, [timerState.session])
-
+    if (running) return;
+    dispatch({ type: "CHANGE_COUNTER", minutes: timerState.session });
+  }, [timerState.session]);
 
   const changePhase = () => {
     //Cuando se cambia de fase, se reinicia el contador interno (Como si pulsasemos star/stop). Lo cual reinicia useEffect y por tanto un nuevo intervalo.
@@ -81,14 +81,14 @@ function App() {
   const start = () => {
     //En caso de start, guarda la fecha actual para que el tiempo se reste correctamente dentro del intervalo.
     if (!running) {
-      dispatch({type: 'START', milliseconds: timerState.counter})
+      dispatch({ type: "START", milliseconds: timerState.counter });
     }
     setStarted(true);
     setRunning(!running);
   };
 
   const reset = () => {
-    dispatch({type: 'RESET', timers: initialState})
+    dispatch({ type: "RESET", timers: initialState });
 
     setInBreak(false);
     setRunning(false);
@@ -99,14 +99,18 @@ function App() {
   };
 
   //Increment and Decrement session/break/longbreak
-  const handleSession = (minutes) => dispatch({type: 'CHANGE_SESSION', minutes: minutes})
-  const handleBreak = (minutes) => dispatch({type: 'CHANGE_BREAK', minutes: minutes})
-  const handleLongBreak = (minutes) => dispatch({type: 'CHANGE_LONGBREAK', minutes: minutes})
+  const handleSession = (minutes) =>
+    dispatch({ type: "CHANGE_SESSION", minutes: minutes });
+  const handleBreak = (minutes) =>
+    dispatch({ type: "CHANGE_BREAK", minutes: minutes });
+  const handleLongBreak = (minutes) =>
+    dispatch({ type: "CHANGE_LONGBREAK", minutes: minutes });
 
   return (
     <>
-      <div className=" cover-size absolute inset-0 flex flex-col pt-4 text-black antialiased duration-300 sm:pt-6 md:pt-10">
+      <div className=" cover-size absolute inset-0 flex flex-col pt-4 text-white antialiased duration-300 sm:pt-6 md:pt-10">
         <Clock
+          showMenu={() => setIsMenuHidden(false)}
           started={started}
           inBreak={inBreak}
           timeCounter={timerState.counter}
@@ -118,6 +122,7 @@ function App() {
           started={started}
         />
         <OptionsCard
+          hidden={isMenuHidden}
           handleSession={handleSession}
           handleBreak={handleBreak}
           handleLongBreak={handleLongBreak}
@@ -131,6 +136,11 @@ function App() {
         id="beep"
         preload="auto"
       />
+      <div
+        className={`absolute -z-10 h-full w-full bg-bg-image bg-cover bg-center bg-no-repeat brightness-75 ${
+          running ? "brightness-50" : ""
+        } duration-500`}
+      ></div>
     </>
   );
 }

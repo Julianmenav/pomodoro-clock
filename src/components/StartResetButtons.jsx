@@ -21,7 +21,7 @@ const StartResetButtons = ({ handleStart, handleReset, running, started }) => {
   );
 
   return (
-    <div className="">
+    <div className="noHideMenu absolute bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2">
       {started ? (
         <div>
           {running ? pauseButton : playButton}
