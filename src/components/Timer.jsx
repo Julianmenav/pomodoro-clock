@@ -1,17 +1,17 @@
+import { useState } from "react"
+import {AiOutlineLeft, AiOutlineRight} from "react-icons/ai"
+
 
 //Componente para controlar un timer y su state.
-export const Timer = (props) => {
+export const Timer = ({type, timer, changeTimer}) => {
+  const [currentValue, setCurrentValue] = useState(timer);
+
+
   return (
-    <div id={props.type + "-length"} className="timer" style={props.style}>
-      <button id={props.type + "-decrement"} onClick={props.decrementCallback}>
-        <i className="bi bi-arrow-left"></i>
-      </button>
-      <div>
-        <p>{props.timer}</p>
-      </div>
-      <button id={props.type + "-increment"} onClick={props.incrementCallback}>
-        <i className="bi bi-arrow-right"></i>
-      </button>
+    <div>
+      <p><span>{type}</span><span>{currentValue}</span></p>
+      <input value={currentValue} onChange={(e) => setCurrentValue(e.target.value)} onMouseUp={(e) => changeTimer(e.target.value)} type="range" min="1" max="60" step="1" />
     </div>
   )
 }
+
