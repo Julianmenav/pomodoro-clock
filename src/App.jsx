@@ -115,6 +115,7 @@ function App() {
           handleStart={start}
           handleReset={reset}
           running={running}
+          started={started}
         />
         <OptionsCard
           handleSession={handleSession}

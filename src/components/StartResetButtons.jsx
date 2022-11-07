@@ -1,15 +1,35 @@
 import React from "react";
-import { FaPause, FaPlay, FaUndoAlt} from "react-icons/fa";
+import { FaPause, FaPlay, FaUndoAlt } from "react-icons/fa";
 
-const StartResetButtons = ({ handleStart, handleReset, running }) => {
+const StartResetButtons = ({ handleStart, handleReset, running, started }) => {
+  const playButton = (
+    <button className="text-3xl" onClick={handleStart}>
+      <FaPlay />
+    </button>
+  );
+
+  const pauseButton = (
+    <button className="text-3xl" onClick={handleStart}>
+      <FaPause />
+    </button>
+  );
+
+  const resetButton = (
+    <button className="text-3xl" onClick={handleReset}>
+      <FaUndoAlt className="m-auto"/>
+    </button>
+  );
+
   return (
-    <div>
-      <button className="text-3xl" onClick={handleStart}>
-        {running ? <FaPause /> : <FaPlay />}
-      </button>
-      <button className={"text-3xl"} onClick={handleReset}>
-        <FaUndoAlt />
-      </button>
+    <div className="">
+      {started ? (
+        <div>
+          {running ? pauseButton : playButton}
+          {resetButton}
+        </div>
+      ) : (
+        playButton
+      )}
     </div>
   );
 };
