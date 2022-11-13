@@ -108,7 +108,7 @@ function App() {
 
   return (
     <>
-      <div className=" cover-size absolute inset-0 flex flex-col pt-4 text-white antialiased duration-300 sm:pt-6 md:pt-10">
+      <div className=" cover-size absolute inset-0 flex flex-col  text-white antialiased duration-300  overflow-hidden">
         <Clock
           showMenu={() => setIsMenuHidden(false)}
           started={started}
@@ -122,6 +122,7 @@ function App() {
           started={started}
         />
         <OptionsCard
+          running={running}
           hidden={isMenuHidden}
           handleSession={handleSession}
           handleBreak={handleBreak}
