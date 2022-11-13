@@ -15,6 +15,7 @@ export const Timer = ({ type, timer, changeTimer, running }) => {
       <input
         className={`${running ? "cursor-not-allowed" : ""} w-full rounded-full appearance-none cursor-pointer bg-gray-700`}
         disabled={running}
+        value={currentValue}
         onChange={(e) => setCurrentValue(e.target.value)}
         onMouseUp={(e) => changeTimer(e.target.value)}
         onTouchEnd={(e) => changeTimer(e.target.value)}
