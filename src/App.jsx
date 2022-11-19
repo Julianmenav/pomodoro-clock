@@ -109,7 +109,7 @@ function App() {
 
   return (
     <>
-      <div className=" cover-size absolute inset-0 flex flex-col  overflow-hidden text-white antialiased  duration-300">
+      <div className="fixed cover-size inset-0 flex flex-col  overflow-hidden text-white antialiased  duration-300">
         <OpenMenu
           hidden={!isMenuHidden}
           showMenu={() => setIsMenuHidden(false)}
@@ -143,7 +143,7 @@ function App() {
         preload="auto"
       />
       <div
-        className={`absolute -z-10 h-full w-full bg-bg-image bg-cover bg-center bg-no-repeat brightness-75 ${
+        className={`fixed -z-10 h-full w-full bg-bg-image bg-cover bg-center bg-no-repeat brightness-75 ${
           running ? "brightness-50" : ""
         } duration-500`}
       ></div>
