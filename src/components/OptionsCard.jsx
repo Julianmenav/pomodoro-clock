@@ -12,7 +12,7 @@ const OptionsCard = ({
   handleLongBreak
 }) => {
   return (
-    <div className={`absolute h-full right-0 pl-5 pr-3 md:pr-16 lg:pr-32 pt-12 bg-black/80 duration-700 ${hidden ? "translate-x-full" : ""}`}>
+    <div className={`absolute h-full overflow-y-auto right-0 pl-5 pr-3 md:pr-16 lg:pr-32 pt-12 bg-black/80 duration-700 ${hidden ? "translate-x-full" : ""}`}>
       <Timer
         running={running}
         type="Session"
