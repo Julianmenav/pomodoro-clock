@@ -13,6 +13,7 @@ export const timersReducer = (state, action) => {
       return {
         ...state,
         counter: action.minutes * 60 * 1000,
+        cycle: state.cycle + 1,
         internalClock: {
           remaining: action.minutes * 60 * 1000,
           date: new Date(),

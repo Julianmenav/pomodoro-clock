@@ -19,6 +19,7 @@ const initialState = {
   breakTimer: defaultBreak,
   longBreak: defaultLongBreak,
   counter: defaultSession * 60 * 1000,
+  cycle: 1,
   internalClock: { remaining: 0, date: new Date() },
 };
 
@@ -68,14 +69,18 @@ function App() {
     //Cuando se cambia de fase, se reinicia el contador interno (Como si pulsasemos star/stop). Lo cual reinicia useEffect y por tanto un nuevo intervalo.
     setInBreak(!inBreak);
 
-    if (inBreak) {
-      dispatch({ type: "CHANGE_PHASE", minutes: timerState.session });
-    } else {
-      dispatch({ type: "CHANGE_PHASE", minutes: timerState.breakTimer });
-    }
-
     let sound = document.getElementById("beep");
     sound.play();
+
+    const nextCycle = timerState.cycle + 1;
+    //Change to session when nextCycle is odd
+    if(nextCycle% 2 != 0) return dispatch({ type: "CHANGE_PHASE", minutes: timerState.session });
+    
+    //Change to LongBreak in multiples of 8.
+    if(nextCycle % 8 == 0) return dispatch({ type: "CHANGE_PHASE", minutes: timerState.longBreak });
+
+    //Break
+    return dispatch({ type: "CHANGE_PHASE", minutes: timerState.breakTimer });
   };
 
   //Start/Stop and reset functions
