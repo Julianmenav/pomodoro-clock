@@ -12,7 +12,7 @@ const OptionsCard = ({
   handleLongBreak
 }) => {
   return (
-    <div className={`absolute h-full overflow-y-auto right-0 pl-5 pr-3 md:pr-16 lg:pr-32 pt-12 bg-black/80 duration-700 ${hidden ? "translate-x-full" : ""}`}>
+    <div className={`absolute h-full max-w-md overflow-y-auto right-0 pl-5 pr-3 md:pr-16 lg:pr-32 pt-12 bg-black/80 duration-700 ${hidden ? "translate-x-full" : ""}`}>
       <Timer
         running={running}
         type="Session"
@@ -31,6 +31,13 @@ const OptionsCard = ({
         changeTimer={handleLongBreak}
         timer={longBreak}
       />
+      <div className="text-sm">
+        <p className="pb-2">The <b>Pomodoro Technique</b> is a popular method for studying or working effectively.</p>
+        <p className="pb-1 ">It involves using three timers:</p>
+        <p className="pb-1.5 "><b className="text-teal-200">Session</b>: Dedicated work time where you focus on a task.</p>
+        <p className="pb-1.5 "><b className="text-teal-200">Break</b>: Short time to rest between sessions.</p>
+        <p className="pb-1.5 "><b className="text-teal-200">Long break</b>: Each 4 sessions, you will have a bigger break, and you will have completed an entire Pomodoro.</p>
+      </div>
     </div>
   );
 };
