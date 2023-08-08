@@ -114,23 +114,25 @@ function App() {
 
   return (
     <>
-      <div className="fixed cover-size inset-0 flex flex-col  overflow-hidden text-white antialiased  duration-300">
+      <div className="fixed cover-size inset-0 flex flex-col  overflow-hidden text-white antialiased duration-300 px-2 select-none">
         <OpenMenu
           hidden={!isMenuHidden}
           showMenu={() => setIsMenuHidden(false)}
         />
-        <Clock
-          showMenu={() => setIsMenuHidden(false)}
-          started={started}
-          inBreak={inBreak}
-          timeCounter={timerState.counter}
-        />
-        <StartResetButtons
-          handleStart={start}
-          handleReset={reset}
-          running={running}
-          started={started}
-        />
+        <div className="flex flex-col justify-center items-center w-full max-w-lg lg:max-w-xl bg-zinc-800 m-auto pb-10 pt-14 lg:pb-12 lg:pt-20 rounded-xl border-2 border-zinc-700 gap-4 lg:gap-10">
+          <Clock
+            showMenu={() => setIsMenuHidden(false)}
+            started={started}
+            inBreak={inBreak}
+            timeCounter={timerState.counter}
+          />
+          <StartResetButtons
+            handleStart={start}
+            handleReset={reset}
+            running={running}
+            started={started}
+          />
+        </div>
         <OptionsCard
           running={running}
           hidden={isMenuHidden}
@@ -148,10 +150,11 @@ function App() {
         preload="auto"
       />
       <div
-        className={`fixed -z-10 h-full w-full bg-bg-image bg-cover bg-center bg-no-repeat brightness-75 ${
+        className={`fixed -z-10 h-full w-full brightness-75 ${
           running ? "brightness-50" : ""
         } duration-500`}
-      ></div>
+      >
+      </div>  
     </>
   );
 }
