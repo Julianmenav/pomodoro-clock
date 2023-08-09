@@ -14,7 +14,7 @@ export const useHiddenMenu = () => {
   }, [isMenuHidden])
 
   const backgroundClick = (e) => {
-    if (!e.target.closest('.noHideMenu')){
+    if (!e.target.closest('.noHideMenu') || e.target.closest('.closeMenu')){
       setIsMenuHidden(true);
     }
   }

@@ -121,7 +121,6 @@ function App() {
         />
         <div className="flex flex-col justify-center items-center w-full max-w-lg lg:max-w-xl bg-zinc-800 m-auto pb-10 pt-14 lg:pb-12 lg:pt-20 rounded-xl border-2 border-zinc-700 gap-4 lg:gap-10">
           <Clock
-            showMenu={() => setIsMenuHidden(false)}
             started={started}
             inBreak={inBreak}
             timeCounter={timerState.counter}

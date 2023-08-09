@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { formatUnixToMinutes } from "../utils/formatTimer";
 
-export const Clock = ({ started, showMenu, timeCounter }) => {
+export const Clock = ({ started, timeCounter }) => {
   const formattedTime = formatUnixToMinutes(timeCounter);
   
   useEffect(() => {
@@ -9,8 +9,8 @@ export const Clock = ({ started, showMenu, timeCounter }) => {
   }, [formattedTime]);
 
   return (
-    <div className="noHideMenu" >
-        <div id="time-left" className=" pb-2">
+    <div>
+        <div id="time-left" className="pb-2">
           <span className="text-8xl md:text-9xl font-bold">{formatUnixToMinutes(timeCounter)}</span>
       </div>
     </div>
